@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>We'll Be Back Shortly — Meadowly Dairy Co.</title>
+  <meta name="description" content="Meadowly's online ordering is taking a brief pause for maintenance. Deliveries continue, the farm is awake, and the care team is still here.">
+  <meta name="theme-color" content="#28543B">
+  <meta property="og:title" content="We'll Be Back Shortly — Meadowly Dairy Co.">
+  <meta property="og:description" content="A short pause for maintenance. The herd, the bottles and the care team are all still here.">
+  <meta property="og:image" content="assets/images/maintenance-hero.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <script>
+    (() => {
+      try {
+        const theme = localStorage.getItem("meadowly-theme");
+        if (theme === "dark" || (!theme && matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.dataset.theme = "dark";
+        }
+        if (localStorage.getItem("meadowly-dir") === "rtl") document.documentElement.dir = "rtl";
+      } catch (error) {}
+    })();
+  </script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/pages.js" defer></script>
+</head>
+<body data-page="maintenance">
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="section section--forest" id="maintenance-hero">
+      <div class="container">
+        <div class="maintenance-layout">
+          <div class="reveal">
+            <span class="eyebrow" style="color:var(--butter);">A short pause</span>
+            <h1>We're tuning the morning.</h1>
+            <p class="lead">Online ordering is resting for a few hours while we upgrade the bottle-wash line and the route dashboard. Deliveries continue as usual, and the farm is very much awake.</p>
+            <div class="countdown" data-countdown data-deadline="2026-11-20T06:30:00+05:30" aria-label="Time until ordering returns">
+              <div class="countdown__cell"><strong data-countdown-days>02</strong><span>Days</span></div>
+              <div class="countdown__cell"><strong data-countdown-hours>08</strong><span>Hours</span></div>
+              <div class="countdown__cell"><strong data-countdown-minutes>30</strong><span>Minutes</span></div>
+              <div class="countdown__cell"><strong data-countdown-seconds>00</strong><span>Seconds</span></div>
+            </div>
+            <div class="page-hero__actions" style="margin-top:1.6rem;">
+              <a class="btn btn--butter" href="contact.html">Talk to the care team</a>
+              <a class="btn btn--outline" href="blog.html">Read a farm note</a>
+            </div>
+          </div>
+          <div class="visit-card__media reveal reveal--right">
+            <img src="assets/images/maintenance-hero.jpg" alt="A quiet dairy barn with bottles waiting on the wash line" fetchpriority="high">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="status">
+      <div class="container">
+        <div class="grid grid-2">
+          <div class="reveal">
+            <span class="eyebrow">What's happening</span>
+            <h2>A small upgrade, done properly.</h2>
+            <p class="section-copy">We are replacing the final rinse on the bottle line and moving the route dashboard to a faster server. Neither job can be rushed; both will be finished before the next morning delivery.</p>
+            <div class="page-hero__actions">
+              <a class="btn btn--outline" href="contact.html#contact-form">Ask a question</a>
+            </div>
+          </div>
+          <div class="maintenance-panel reveal">
+            <div class="maintenance-task">
+              <div class="maintenance-task__head">
+                <strong>Bottle-wash final rinse</strong>
+                <span>In progress</span>
+              </div>
+              <div class="progress"><div class="progress__bar progress__bar--butter" style="width:72%;"></div></div>
+            </div>
+            <div class="maintenance-task">
+              <div class="maintenance-task__head">
+                <strong>Route dashboard migration</strong>
+                <span>In progress</span>
+              </div>
+              <div class="progress"><div class="progress__bar" style="width:46%;"></div></div>
+            </div>
+            <div class="maintenance-task">
+              <div class="maintenance-task__head">
+                <strong>Morning deliveries</strong>
+                <span>Running normally</span>
+              </div>
+              <div class="progress"><div class="progress__bar" style="width:100%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--sage" id="still-working">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__copy">
+            <span class="eyebrow">While we're quiet</span>
+            <h2 class="section-title">What's still working.</h2>
+          </div>
+          <p class="section-copy">The website is paused. The important parts are not.</p>
+        </div>
+        <div class="improvement-grid">
+          <div class="improvement-card reveal">
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#truck"></use></svg>
+            <h3>Morning deliveries</h3>
+            <p>Every existing route runs as scheduled. Your rider will be at the gate at the usual time.</p>
+          </div>
+          <div class="improvement-card reveal">
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#phone"></use></svg>
+            <h3>The care desk</h3>
+            <p>Call or write from 7 AM to 8 PM. A person, not a bot, will answer.</p>
+          </div>
+          <div class="improvement-card reveal">
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#leaf"></use></svg>
+            <h3>The farm</h3>
+            <p>Milking, grazing and the quiet work of the morning continue exactly as before.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="notify">
+      <div class="container">
+        <div class="notify-panel reveal">
+          <div class="grid grid-2">
+            <div>
+              <span class="eyebrow">Be first back</span>
+              <h2>Tell me when ordering returns.</h2>
+              <p>Leave your email and we'll send one short note when the site is ready. No newsletter signup, no promotions.</p>
+            </div>
+            <div>
+              <form class="js-newsletter newsletter-form" action="#" method="post">
+                <label class="sr-only" for="maintenanceEmail">Email address</label>
+                <input id="maintenanceEmail" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+                <button class="btn btn--primary" type="submit">Notify me</button>
+              </form>
+              <p class="form-note" style="margin-top:.7rem;">One message only. We'll delete the address after ordering is back.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--bottom-border" id="maintenance-faq">
+      <div class="container">
+        <div class="grid grid-2">
+          <div class="reveal">
+            <span class="eyebrow">Quick answers</span>
+            <h2>Will my delivery change?</h2>
+            <p class="section-copy">No. This is a website maintenance window, not a farm closure. Existing subscriptions and one-off orders are unaffected.</p>
+            <div class="page-hero__actions">
+              <a class="btn btn--outline" href="dashboard.html">Open my dashboard</a>
+            </div>
+          </div>
+          <div class="accordion reveal" data-accordion data-single="true">
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="true">
+                Can I still place an order?
+                <span class="acc-btn__icon" aria-hidden="true"></span>
+              </button>
+              <div class="acc-panel"><div><p>Not online for the next few hours. If you need something urgent for tomorrow, call the care desk and we'll add it to the route if there's room.</p></div></div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false">
+                Will my subscription renew?
+                <span class="acc-btn__icon" aria-hidden="true"></span>
+              </button>
+              <div class="acc-panel"><div><p>Yes, renewals continue as normal. If you'd like to pause, call or email the care desk and we'll adjust the next delivery.</p></div></div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false">
+                Is my payment information safe?
+                <span class="acc-btn__icon" aria-hidden="true"></span>
+              </button>
+              <div class="acc-panel"><div><p>Yes. Payments are handled by our encrypted payment partner. The maintenance work does not touch payment records.</p></div></div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false">
+                When exactly will you be back?
+                <span class="acc-btn__icon" aria-hidden="true"></span>
+              </button>
+              <div class="acc-panel"><div><p>We expect ordering to be live by 6:30 AM on 20 November. The countdown on this page is updated live; if anything changes, we'll post it here first.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="maintenance-help">
+      <div class="container">
+        <div class="utility-support">
+          <div>
+            <h3>Need something before the site returns?</h3>
+            <p>The care desk can add, pause or change a delivery for tomorrow. Call us — we'll handle it by hand.</p>
+          </div>
+          <div class="page-hero__actions">
+            <a class="btn btn--primary" href="tel:+914224001880">Call +91 422 400 1880</a>
+            <a class="btn btn--outline" href="mailto:care@meadowly.in">Email care@meadowly.in</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

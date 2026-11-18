@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Story — Meadowly Dairy Co.</title>
+  <meta name="description" content="Meet the people, pasture and principles behind Meadowly Dairy Co. A Coimbatore dairy with a small herd, a long memory and a promise to never hurry the milk.">
+  <meta name="theme-color" content="#28543B">
+  <meta property="og:title" content="Our Story — Meadowly Dairy Co.">
+  <meta property="og:description" content="A decade of early mornings, careful farming and glass bottles at Coimbatore doorsteps.">
+  <meta property="og:image" content="assets/images/about-hero.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <script>
+    (() => {
+      try {
+        const theme = localStorage.getItem("meadowly-theme");
+        if (theme === "dark" || (!theme && matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.dataset.theme = "dark";
+        }
+        if (localStorage.getItem("meadowly-dir") === "rtl") document.documentElement.dir = "rtl";
+      } catch (error) {}
+    })();
+  </script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/pages.js" defer></script>
+</head>
+<body data-page="about">
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero page-hero--sage" id="our-story">
+      <div class="container">
+        <div class="page-hero__grid">
+          <div class="page-hero__copy reveal">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <a href="index.html">Home</a>
+              <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#chevron-right"></use></svg>
+              <span aria-current="page">Our story</span>
+            </nav>
+            <span class="eyebrow">Meadowly, since 2016</span>
+            <h1>A dairy built around the first hour of the day.</h1>
+            <p class="lead">We began with eight cows, one steel pail and a borrowed fridge. Ten years later, we still believe the measure of a dairy is how it treats the quietest hours of the morning.</p>
+            <div class="page-hero__actions">
+              <a class="btn btn--primary" href="sourcing.html">Meet our partner farms</a>
+              <a class="btn btn--outline" href="contact.html">Come for a visit</a>
+            </div>
+            <div class="page-hero__meta">
+              <div><strong>2016</strong><span>Founded in Anaikatti</span></div>
+              <div><strong>160</strong><span>Acres under pasture</span></div>
+              <div><strong>3,200+</strong><span>Morning tables served</span></div>
+            </div>
+          </div>
+          <div class="page-hero__media page-hero__media--arch reveal reveal--scale">
+            <img class="main" src="assets/images/about-hero.jpg" alt="The Meadowly founding family on their farm at sunrise" fetchpriority="high">
+            <div class="float-card">
+              <span class="eyebrow">Still here</span>
+              <strong style="display:block; margin-top:.25rem; font-family:var(--font-display); font-size:1.3rem;">One herd, one standard.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="milestones">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__copy">
+            <span class="eyebrow">A short history</span>
+            <h2 class="section-title">Slow growth, on purpose.</h2>
+          </div>
+          <p class="section-copy">We have said no to more expansion than we have said yes to. Every new route begins only when the farm, the herd and the people are ready.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <span class="timeline-year">2016</span>
+            <div class="timeline-body">
+              <h3>Eight cows and a stubborn idea</h3>
+              <p>Meera and Arjun began selling glass bottles to forty families in Vadavalli. Every bottle was washed by hand, every route driven before work.</p>
+            </div>
+            <img class="timeline-img" src="assets/images/about-story-2016.jpg" alt="The original Meadowly shed in 2016" loading="lazy">
+          </article>
+          <article class="timeline-item timeline-item--reverse reveal">
+            <span class="timeline-year">2019</span>
+            <div class="timeline-body">
+              <h3>An A2 herd, cared for by name</h3>
+              <p>We partnered with two Gir farms in Pollachi and chose smaller, slower milk over volume. The first A2 Gir bottle sold out in a morning.</p>
+            </div>
+            <img class="timeline-img" src="assets/images/about-story-2019.jpg" alt="Gir cows grazing under trees in 2019" loading="lazy">
+          </article>
+          <article class="timeline-item reveal">
+            <span class="timeline-year">2022</span>
+            <div class="timeline-body">
+              <h3>The glass loop begins</h3>
+              <p>We retired everyday plastic pouches for returnable glass. It was expensive, inconvenient and exactly right. Customers kept the loop alive.</p>
+            </div>
+            <img class="timeline-img" src="assets/images/about-story-2022.jpg" alt="Returnable glass milk bottles ready for delivery" loading="lazy">
+          </article>
+          <article class="timeline-item timeline-item--reverse reveal">
+            <span class="timeline-year">2026</span>
+            <div class="timeline-body">
+              <h3>A dairy that still knows your name</h3>
+              <p>Three thousand families later, our delivery team still remembers who takes curd on Fridays and who leaves the empty bottles by the gate.</p>
+            </div>
+            <img class="timeline-img" src="assets/images/about-story-2026.jpg" alt="A Meadowly delivery at a Coimbatore home in 2026" loading="lazy">
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--sage" id="values">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__copy">
+            <span class="eyebrow">What we protect</span>
+            <h2 class="section-title">The promises behind the pour.</h2>
+          </div>
+          <p class="section-copy">These are not aspirations on a wall. They are daily decisions about feed, temperature, packaging, pay and the pace of growth.</p>
+        </div>
+        <div class="value-grid">
+          <article class="value-card value-card--image value-card--span-6 reveal">
+            <img src="assets/images/about-values-field.jpg" alt="Pasture at Meadowly partner farm" loading="lazy">
+            <div class="value-card__copy">
+              <h3>Land first</h3>
+              <p>Healthy soil grows better grass. Better grass makes calmer animals and milk with more character.</p>
+            </div>
+          </article>
+          <article class="value-card value-card--image value-card--span-6 reveal">
+            <img src="assets/images/about-values-farmer.jpg" alt="A partner farmer carrying a milk pail" loading="lazy">
+            <div class="value-card__copy">
+              <h3>Farmer at the centre</h3>
+              <p>We pay above market, on time, every week — and buy the milk that doesn't make our cut.</p>
+            </div>
+          </article>
+          <article class="value-card value-card--span-3 reveal">
+            <span class="value-card__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#clock"></use></svg></span>
+            <div>
+              <h3>Freshness, timed</h3>
+              <p>Chilled within the hour, delivered within nine. Every batch carries its own clock.</p>
+            </div>
+          </article>
+          <article class="value-card value-card--span-3 reveal">
+            <span class="value-card__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#map-pin"></use></svg></span>
+            <div>
+              <h3>Traceable always</h3>
+              <p>Every bottle is linked to a farm, a batch and a person who can answer for it.</p>
+            </div>
+          </article>
+          <article class="value-card value-card--butter value-card--span-3 reveal">
+            <span class="value-card__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#repeat"></use></svg></span>
+            <div>
+              <h3>Waste, designed out</h3>
+              <p>Glass returns. Whey is used. Surplus finds its way into curd, paneer and nothing else.</p>
+            </div>
+          </article>
+          <article class="value-card value-card--forest value-card--span-3 reveal">
+            <span class="value-card__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#shield"></use></svg></span>
+            <div>
+              <h3>Standards, visible</h3>
+              <p>FSSAI certified, batch-tested and open to the people who drink our milk.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="week-at-meadowly">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__copy">
+            <span class="eyebrow">A week in the valley</span>
+            <h2 class="section-title">Small moments, in their real light.</h2>
+          </div>
+          <p class="section-copy">No models, no set dressing. These are the sights our team sees between 4:30 and 9 AM.</p>
+        </div>
+        <div class="gallery-mosaic">
+          <figure class="gallery-item reveal">
+            <img src="assets/images/about-gallery-1.jpg" alt="Mist lifting over the pasture" loading="lazy">
+            <figcaption class="gallery-caption">5:40 AM · the valley wakes slowly</figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/images/about-gallery-2.jpg" alt="Hands washing a steel milk pail" loading="lazy">
+            <figcaption class="gallery-caption">6:05 AM · everything is washed twice</figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/images/about-gallery-3.jpg" alt="A calf at the edge of the pasture" loading="lazy">
+            <figcaption class="gallery-caption">7:10 AM · the youngest get first pasture</figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/images/about-gallery-4.jpg" alt="Milk being poured into a glass bottle" loading="lazy">
+            <figcaption class="gallery-caption">7:45 AM · glass before plastic</figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/images/about-gallery-5.jpg" alt="A delivery rider on a tree-lined road" loading="lazy">
+            <figcaption class="gallery-caption">8:15 AM · the last route leaves</figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/images/about-gallery-6.jpg" alt="A family breakfast table with fresh dairy" loading="lazy">
+            <figcaption class="gallery-caption">8:52 AM · breakfast, somewhere quiet</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--sage" id="people">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__copy">
+            <span class="eyebrow">The people</span>
+            <h2 class="section-title">Good milk is a team sport.</h2>
+          </div>
+          <p class="section-copy">A herdsperson, a dairy scientist, a route lead and a customer host. Four people who make the morning work.</p>
+        </div>
+        <div class="team-grid">
+          <article class="team-card reveal">
+            <div class="team-card__photo">
+              <img src="assets/images/team-meera.jpg" alt="Meera Raghavan, co-founder" loading="lazy">
+            </div>
+            <div class="team-card__body">
+              <h3>Meera Raghavan</h3>
+              <span>Co-founder · Dairy &amp; farm</span>
+              <a href="mailto:meera@meadowly.in">meera@meadowly.in
+                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#arrow-up-right"></use></svg>
+              </a>
+            </div>
+          </article>
+          <article class="team-card reveal">
+            <div class="team-card__photo">
+              <img src="assets/images/team-arjun.jpg" alt="Arjun Menon, co-founder" loading="lazy">
+            </div>
+            <div class="team-card__body">
+              <h3>Arjun Menon</h3>
+              <span>Co-founder · Routes &amp; community</span>
+              <a href="mailto:arjun@meadowly.in">arjun@meadowly.in
+                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#arrow-up-right"></use></svg>
+              </a>
+            </div>
+          </article>
+          <article class="team-card reveal">
+            <div class="team-card__photo">
+              <img src="assets/images/team-kavya.jpg" alt="Dr Kavya Subramani, dairy scientist" loading="lazy">
+            </div>
+            <div class="team-card__body">
+              <h3>Dr Kavya Subramani</h3>
+              <span>Dairy scientist · Quality</span>
+              <a href="mailto:kavya@meadowly.in">kavya@meadowly.in
+                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#arrow-up-right"></use></svg>
+              </a>
+            </div>
+          </article>
+          <article class="team-card reveal">
+            <div class="team-card__photo">
+              <img src="assets/images/team-vignesh.jpg" alt="Vignesh Palanisamy, head of delivery" loading="lazy">
+            </div>
+            <div class="team-card__body">
+              <h3>Vignesh Palanisamy</h3>
+              <span>Head of delivery · Coimbatore</span>
+              <a href="mailto:vignesh@meadowly.in">vignesh@meadowly.in
+                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#arrow-up-right"></use></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--forest" id="promise">
+      <div class="container">
+        <div class="grid grid-2">
+          <div class="reveal">
+            <span class="eyebrow">Our promise</span>
+            <h2 style="max-width:15ch;">We will never hurry the milk.</h2>
+          </div>
+          <div class="reveal">
+            <p class="lead" style="max-width:48ch;">We will keep the herd small enough to know, the route short enough to care about, and the bottle returnable for as long as glass will have us. If growth ever asks us to break one of those, we will choose the dairy we already are.</p>
+            <div class="page-hero__actions">
+              <a class="btn btn--butter" href="subscription.html">Start your morning rhythm</a>
+              <a class="btn btn--outline" href="blog.html">Read our farm notes</a>
+            </div>
+          </div>
+        </div>
+        <div class="press-strip" aria-label="Press features">
+          <span>“The quiet standard in Coimbatore dairy.” — The Hindu</span>
+          <span>“A rare milk route with a memory.” — The Better India</span>
+          <span>“Glass, grass and a longer view.” — Outlook Traveller</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

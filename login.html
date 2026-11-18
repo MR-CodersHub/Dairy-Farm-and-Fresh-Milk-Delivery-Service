@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log In — Meadowly Dairy Co.</title>
+  <meta name="description" content="Sign in to your Meadowly dashboard to manage deliveries, pause your box, download invoices and adjust your weekly morning rhythm.">
+  <meta name="theme-color" content="#28543B">
+  <meta property="og:title" content="Log In — Meadowly Dairy Co.">
+  <meta property="og:description" content="Your morning dashboard: deliveries, box changes and invoices.">
+  <meta property="og:image" content="assets/images/login-side.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <script>
+    (() => {
+      try {
+        const theme = localStorage.getItem("meadowly-theme");
+        if (theme === "dark" || (!theme && matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.dataset.theme = "dark";
+        }
+        if (localStorage.getItem("meadowly-dir") === "rtl") document.documentElement.dir = "rtl";
+      } catch (error) {}
+    })();
+  </script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/pages.js" defer></script>
+</head>
+<body data-page="login">
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="auth-section" id="login">
+      <div class="container">
+        <div class="auth-layout">
+          <div class="auth-card reveal">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <a href="index.html">Home</a>
+              <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#chevron-right"></use></svg>
+              <span aria-current="page">Log in</span>
+            </nav>
+            <span class="eyebrow" style="margin-top:1.2rem;">Welcome back</span>
+            <h1>Your morning is waiting.</h1>
+            <p>Sign in to see your next delivery, change your box or pause while you're away. No passwords to remember at the door.</p>
+            <form class="auth-form" id="loginForm" action="#" method="post">
+              <div class="field">
+                <label for="loginEmail">Email address</label>
+                <input id="loginEmail" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+                <span class="error-text"></span>
+              </div>
+              <div class="field">
+                <label for="loginPassword">Password</label>
+                <div class="password-field">
+                  <input id="loginPassword" type="password" name="password" placeholder="At least 6 characters" autocomplete="current-password" required>
+                  <button class="password-toggle" type="button" data-password-toggle aria-label="Show password" aria-pressed="false">
+                    <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#lock"></use></svg>
+                  </button>
+                </div>
+                <span class="error-text"></span>
+              </div>
+              <div class="auth-row">
+                <label class="check">
+                  <input type="checkbox" name="remember" checked>
+                  <span>Keep me signed in</span>
+                </label>
+                <a href="#login-help">Forgot password?</a>
+              </div>
+              <button class="btn btn--primary btn--block" type="submit">Log in to my dashboard</button>
+            </form>
+            <div class="demo-note">
+              <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#info"></use></svg>
+              <span>Demo experience: use any valid email and a password of at least 6 characters.</span>
+            </div>
+            <div class="auth-divider">New to Meadowly?</div>
+            <div class="auth-switch">
+              <a href="signup.html">Create an account</a> and choose your first delivery rhythm.
+            </div>
+          </div>
+          <div class="auth-visual reveal reveal--scale">
+            <img src="assets/images/login-side.jpg" alt="A Meadowly delivery rider at sunrise with a crate of milk bottles" fetchpriority="high">
+            <div class="auth-visual__content">
+              <div>
+                <span class="badge badge--butter">
+                  <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#shield"></use></svg>
+                  Member dashboard
+                </span>
+              </div>
+              <div class="auth-visual__quote">
+                <blockquote>“The only subscription I've never once forgotten to manage.”</blockquote>
+                <p>Meera R. · Saibaba Colony · Member since 2023</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight" id="login-trust">
+      <div class="container">
+        <div class="auth-trust">
+          <span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#lock"></use></svg>
+            Secure sign-in
+          </span>
+          <span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#calendar"></use></svg>
+            Change delivery until 9 PM
+          </span>
+          <span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#download"></use></svg>
+            Invoices in one place
+          </span>
+          <span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#phone"></use></svg>
+            A real care team
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--sage" id="member-life">
+      <div class="container">
+        <div class="login-trust">
+          <div class="login-trust__media reveal reveal--left">
+            <img src="assets/images/login-testimonial.jpg" alt="A Meadowly member pouring milk at a bright kitchen table" loading="lazy">
+            <div class="login-trust__quote">“I can pause for a trip in ten seconds. That's the whole reason I stay.”</div>
+          </div>
+          <div class="reveal">
+            <span class="eyebrow">Made for real mornings</span>
+            <h2>One quiet place to run your morning.</h2>
+            <p class="lead">Your dashboard is not a shop. It's a simple calendar for the things you repeat: milk, curd, butter and the occasional pause.</p>
+            <div class="security-list">
+              <div class="security-item">
+                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#check-circle"></use></svg>
+                <span>See exactly what is coming and when.</span>
+              </div>
+              <div class="security-item">
+                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#check-circle"></use></svg>
+                <span>Pause, skip or double up until 9 PM the evening before.</span>
+              </div>
+              <div class="security-item">
+                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#check-circle"></use></svg>
+                <span>Download invoices without asking anyone.</span>
+              </div>
+            </div>
+            <div class="page-hero__actions">
+              <a class="btn btn--primary" href="signup.html">Create an account</a>
+              <a class="link-arrow" href="pricing.html">See plans
+                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"></use></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="login-features">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__copy">
+            <span class="eyebrow">Once you're in</span>
+            <h2 class="section-title">Less admin. More breakfast.</h2>
+          </div>
+          <p class="section-copy">The dashboard is deliberately small. It does four things, and it does them before you've finished your coffee.</p>
+        </div>
+        <div class="mini-feature-grid">
+          <div class="mini-feature reveal">
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#calendar"></use></svg>
+            <div>
+              <strong>Delivery calendar</strong>
+              <span>See the next two weeks at a glance, including your cut-off times.</span>
+            </div>
+          </div>
+          <div class="mini-feature reveal">
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#box"></use></svg>
+            <div>
+              <strong>Box changes</strong>
+              <span>Add curd, skip butter or send an extra bottle to a neighbour.</span>
+            </div>
+          </div>
+          <div class="mini-feature reveal">
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#pause"></use></svg>
+            <div>
+              <strong>Pause with a tap</strong>
+              <span>Going away? Pause the route. Billing adjusts automatically.</span>
+            </div>
+          </div>
+          <div class="mini-feature reveal">
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#download"></use></svg>
+            <div>
+              <strong>Invoices</strong>
+              <span>Monthly statements, ready when you need them.</span>
+            </div>
+          </div>
+          <div class="mini-feature reveal">
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#leaf"></use></svg>
+            <div>
+              <strong>Batch notes</strong>
+              <span>See the farm and collection date behind each bottle.</span>
+            </div>
+          </div>
+          <div class="mini-feature reveal">
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#phone"></use></svg>
+            <div>
+              <strong>Care team</strong>
+              <span>One message reaches the people on the morning route.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--bottom-border" id="login-help">
+      <div class="container">
+        <div class="grid grid-2">
+          <div class="reveal">
+            <span class="eyebrow">A little help</span>
+            <h2>Logging-in questions.</h2>
+            <p class="section-copy">If the answer isn't here, the care desk is awake from 7 AM. We'll get you back to your calendar.</p>
+            <div class="page-hero__actions">
+              <a class="btn btn--outline" href="contact.html">Contact the care team</a>
+            </div>
+          </div>
+          <div class="accordion reveal" data-accordion data-single="true">
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="true">
+                I've forgotten my password.
+                <span class="acc-btn__icon" aria-hidden="true"></span>
+              </button>
+              <div class="acc-panel"><div><p>Use the “Forgot password?” link above and we'll email a reset link to the address on your account. The link stays live for one hour.</p></div></div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false">
+                Can I use the same account for two homes?
+                <span class="acc-btn__icon" aria-hidden="true"></span>
+              </button>
+              <div class="acc-panel"><div><p>Yes. Add a second delivery address in your dashboard and choose which days each address receives a box. Billing stays on one monthly invoice.</p></div></div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false">
+                Why do you need my phone number?
+                <span class="acc-btn__icon" aria-hidden="true"></span>
+              </button>
+              <div class="acc-panel"><div><p>Only for delivery-day changes — a gate code, a missed rider or a bottle return. We never use it for promotions.</p></div></div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false">
+                How do I cancel?
+                <span class="acc-btn__icon" aria-hidden="true"></span>
+              </button>
+              <div class="acc-panel"><div><p>No phone call, no retention script. Pause or cancel from the dashboard before 9 PM the evening before your next delivery. Any unopened bottles are refunded.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="login-join">
+      <div class="container">
+        <div class="newsletter-panel newsletter-panel--forest">
+          <div class="reveal">
+            <span class="eyebrow">Not a member yet?</span>
+            <h2>Start with one quiet week.</h2>
+            <p>Choose a small box, pick two mornings, and see how it feels to wake up to something already taken care of.</p>
+          </div>
+          <div class="reveal">
+            <div class="page-hero__actions">
+              <a class="btn btn--butter" href="signup.html">Create an account</a>
+              <a class="btn btn--outline" href="subscription.html">Explore plans</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

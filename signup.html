@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create an Account — Meadowly Dairy Co.</title>
+  <meta name="description" content="Create your Meadowly account in two quiet steps. Choose your delivery address, set a morning rhythm and manage every box from one simple dashboard.">
+  <meta name="theme-color" content="#28543B">
+  <meta property="og:title" content="Create an Account — Meadowly Dairy Co.">
+  <meta property="og:description" content="Two small steps to a calmer morning.">
+  <meta property="og:image" content="assets/images/signup-side.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <script>
+    (() => {
+      try {
+        const theme = localStorage.getItem("meadowly-theme");
+        if (theme === "dark" || (!theme && matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.dataset.theme = "dark";
+        }
+        if (localStorage.getItem("meadowly-dir") === "rtl") document.documentElement.dir = "rtl";
+      } catch (error) {}
+    })();
+  </script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/pages.js" defer></script>
+</head>
+<body data-page="signup">
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="auth-section" id="signup">
+      <div class="container">
+        <div class="auth-layout">
+          <div class="auth-card reveal">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <a href="index.html">Home</a>
+              <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#chevron-right"></use></svg>
+              <span aria-current="page">Create account</span>
+            </nav>
+            <span class="eyebrow" style="margin-top:1.2rem;">Join the meadow</span>
+            <h1>Two small steps to a calmer morning.</h1>
+            <p>Your details first, then your delivery address. No card needed until you choose a box.</p>
+
+            <div class="signup-steps" aria-label="Signup progress">
+              <div class="signup-steps__item is-active" data-signup-marker="1"><i>1</i>Your details</div>
+              <span class="signup-steps__line" aria-hidden="true"></span>
+              <div class="signup-steps__item" data-signup-marker="2"><i>2</i>Delivery</div>
+            </div>
+
+            <form class="auth-form" id="signupForm" action="#" method="post">
+              <div class="signup-step-panel is-active" data-signup-step="1">
+                <div class="field">
+                  <label for="signupName">Your name</label>
+                  <input id="signupName" type="text" name="name" placeholder="Meera Raghunathan" autocomplete="name">
+                  <span class="error-text"></span>
+                </div>
+                <div class="field" style="margin-top:1rem;">
+                  <label for="signupEmail">Email address</label>
+                  <input id="signupEmail" type="email" name="email" placeholder="you@example.com" autocomplete="email">
+                  <span class="error-text"></span>
+                </div>
+                <div class="field" style="margin-top:1rem;">
+                  <label for="signupPhone">Mobile number</label>
+                  <input id="signupPhone" type="tel" name="phone" placeholder="98765 43210" autocomplete="tel" inputmode="tel">
+                  <span class="error-text"></span>
+                  <span class="field-hint">For delivery-day messages only. No promotions, ever.</span>
+                </div>
+                <div class="auth-row" style="margin-top:1.2rem;">
+                  <span class="form-note">Step 1 of 2</span>
+                  <button class="btn btn--primary" type="button" data-signup-next>Continue to delivery
+                    <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"></use></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="signup-step-panel" data-signup-step="2">
+                <div class="field">
+                  <label for="signupAddress">Delivery address</label>
+                  <textarea id="signupAddress" name="address" rows="4" placeholder="Door number, street, area, city" autocomplete="street-address"></textarea>
+                  <span class="error-text"></span>
+                </div>
+                <div class="field" style="margin-top:1rem;">
+                  <label for="signupPincode">Pincode</label>
+                  <input id="signupPincode" type="text" name="pincode" placeholder="641012" inputmode="numeric" autocomplete="postal-code" maxlength="6">
+                  <span class="error-text"></span>
+                  <span class="field-hint">We deliver across 641 and 642 pincodes. You can change this later.</span>
+                </div>
+                <div class="field" style="margin-top:1rem;">
+                  <label class="check">
+                    <input id="signupConsent" type="checkbox" name="consent">
+                    <span>I agree to the <a href="#">delivery terms</a> and <a href="#">privacy policy</a>, and I'm happy to receive delivery updates on WhatsApp or SMS.</span>
+                  </label>
+                </div>
+                <div class="auth-row" style="margin-top:1.2rem;">
+                  <button class="btn btn--ghost" type="button" data-signup-back>
+                    <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#arrow-left"></use></svg>
+                    Back
+                  </button>
+                  <button class="btn btn--primary" type="submit">Create my account
+                    <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"></use></svg>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div class="auth-divider">Already have an account?</div>
+            <div class="auth-switch">
+              <a href="login.html">Log in</a> and manage your next delivery.
+            </div>
+          </div>
+
+          <div class="auth-visual reveal reveal--scale">
+            <img src="assets/images/signup-side.jpg" alt="A breakfast table with Meadowly milk and fresh fruit" fetchpriority="high">
+            <div class="auth-visual__content">
+              <div>
+                <span class="badge badge--butter">
+                  <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#leaf"></use></svg>
+                  No commitment
+                </span>
+              </div>
+              <div class="auth-visual__quote">
+                <blockquote>“Start with a bottle. Stay for the mornings.”</blockquote>
+                <p>No joining fee · pause anytime · cancel before your next box</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight" id="signup-trust">
+      <div class="container">
+        <div class="auth-trust">
+          <span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#truck"></use></svg>
+            Free delivery in core areas
+          </span>
+          <span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#pause"></use></svg>
+            Pause any week
+          </span>
+          <span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#repeat"></use></svg>
+            Returnable glass bottles
+          </span>
+          <span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#shield"></use></svg>
+            No card needed to join
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--sage" id="signup-benefits">
+      <div class="container">
+        <div class="login-trust">
+          <div class="login-trust__media reveal reveal--left">
+            <img src="assets/images/signup-testimonial.jpg" alt="A family sharing breakfast with Meadowly dairy products" loading="lazy">
+            <div class="login-trust__quote">“The first box arrived before we woke up. By the second week, it felt like the house had always worked this way.”</div>
+          </div>
+          <div class="reveal">
+            <span class="eyebrow">What you're joining</span>
+            <h2>Not a delivery. A rhythm.</h2>
+            <p class="lead">A small account, a simple calendar and a standing date with the farm. You stay in charge of every bottle; we take care of the rest.</p>
+            <div class="security-list">
+              <div class="security-item">
+                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#check-circle"></use></svg>
+                <span>Change quantities until 9 PM the evening before.</span>
+              </div>
+              <div class="security-item">
+                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#check-circle"></use></svg>
+                <span>One bill, one place, no surprise charges.</span>
+              </div>
+              <div class="security-item">
+                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#check-circle"></use></svg>
+                <span>Bottles collected, washed and returned — like they should be.</span>
+              </div>
+            </div>
+            <div class="page-hero__actions">
+              <a class="btn btn--primary" href="#signup">Start with your details</a>
+              <a class="link-arrow" href="pricing.html">See what it costs
+                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"></use></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="signup-next">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__copy">
+            <span class="eyebrow">After you sign up</span>
+            <h2 class="section-title">Three quiet steps.</h2>
+          </div>
+          <p class="section-copy">You'll be inside the dashboard in under two minutes. Choosing the contents of your first box takes a little longer, but that part is the fun bit.</p>
+        </div>
+        <div class="steps">
+          <div class="step-card reveal">
+            <h3>Choose a rhythm</h3>
+            <p>Pick two mornings to start, or let us suggest the plan most of your neighbourhood uses.</p>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#calendar"></use></svg>
+          </div>
+          <div class="step-card reveal">
+            <h3>Fill your first box</h3>
+            <p>Milk, curd, butter, paneer. Start small. Add or remove anything until 9 PM the night before.</p>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#box"></use></svg>
+          </div>
+          <div class="step-card reveal">
+            <h3>Wake up to it</h3>
+            <p>Your first delivery arrives between 5:30 and 7:00 AM, in glass, with a batch note.</p>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#truck"></use></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--bottom-border" id="signup-faq">
+      <div class="container">
+        <div class="grid grid-2">
+          <div class="reveal">
+            <span class="eyebrow">Small print, plainly</span>
+            <h2>Before you begin.</h2>
+            <p class="section-copy">The few things worth knowing before your first box. No surprises, no auto-renew traps.</p>
+          </div>
+          <div class="accordion reveal" data-accordion data-single="true">
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="true">
+                Do I need to pay now?
+                <span class="acc-btn__icon" aria-hidden="true"></span>
+              </button>
+              <div class="acc-panel"><div><p>No. Create your account and build a box first. You'll confirm payment only when you're happy with the plan and the first delivery date.</p></div></div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false">
+                What if my area isn't listed?
+                <span class="acc-btn__icon" aria-hidden="true"></span>
+              </button>
+              <div class="acc-panel"><div><p>Create the account anyway. We'll hold your address on the route list and write as soon as the van reaches your street. No charge until delivery begins.</p></div></div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false">
+                Can I change the address later?
+                <span class="acc-btn__icon" aria-hidden="true"></span>
+              </button>
+              <div class="acc-panel"><div><p>Yes, from the delivery details section of your dashboard. If the new address is outside our route, we'll pause the box and help you decide what to do next.</p></div></div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false">
+                Is there a minimum commitment?
+                <span class="acc-btn__icon" aria-hidden="true"></span>
+              </button>
+              <div class="acc-panel"><div><p>No lock-in. Pause or cancel before 9 PM the evening before a delivery. Monthly plans renew for the dates you've chosen, and unused bottles are refunded.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="signup-cta">
+      <div class="container">
+        <div class="newsletter-panel newsletter-panel--forest">
+          <div class="reveal">
+            <span class="eyebrow">A quieter inbox</span>
+            <h2>Start with the Sunday letter.</h2>
+            <p>Not ready for a box? Join The Sunday Pour and get one farm note a week while you decide.</p>
+          </div>
+          <div class="reveal">
+            <form class="js-newsletter newsletter-form" action="#" method="post">
+              <label class="sr-only" for="signupLetterEmail">Email address</label>
+              <input id="signupLetterEmail" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+              <button class="btn btn--primary" type="submit">Join the letter</button>
+            </form>
+            <p class="form-note" style="color:rgba(255,248,233,.55);">A quiet weekly note. Unsubscribe anytime.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>
