@@ -39,8 +39,8 @@
 }
 
 .app-sidebar .brand-mark {
-  background: var(--butter);
-  color: var(--forest-ink);
+  background: transparent;
+  color: inherit;
 }
 
 .app-sidebar .brand-word small {

@@ -4,8 +4,7 @@
 
 /* ---------- Shared page details ---------- */
 body.page-leaving {
-  opacity: 0.72;
-  transition: opacity 0.18s ease;
+  /* Removed opacity reduction to prevent white screen and flash on navigation / back button */
 }
 
 .header-actions .icon-btn {

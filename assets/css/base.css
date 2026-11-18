@@ -1060,18 +1060,24 @@ small {
   top: 0;
   z-index: 120;
   width: 100%;
+  min-height: var(--header-h);
 }
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 120;
   width: 100%;
   background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid transparent;
   transition: box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+}
+
+.site-header.is-loading,
+.site-header.is-loading *,
+.site-header.is-loading *::before,
+.site-header.is-loading *::after {
+  transition: none !important;
+  animation: none !important;
 }
 
 .site-header.is-scrolled {
@@ -1160,34 +1166,39 @@ small {
 .brand-mark {
   display: grid;
   place-items: center;
-  width: 2.7rem;
-  height: 2.7rem;
+  width: 2.85rem;
+  height: 2.85rem;
   border-radius: 50%;
-  background: var(--forest);
-  color: var(--butter);
-  transition: transform 0.4s var(--ease);
+  background: transparent;
+  flex: none;
+  transition: transform 0.4s var(--ease), filter 0.3s ease;
 }
 
 .brand:hover .brand-mark {
-  transform: rotate(-8deg);
+  transform: rotate(-6deg) scale(1.05);
 }
 
-.brand-mark svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.55;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.brand-mark svg.brand-logo-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+  filter: drop-shadow(0 3px 8px rgba(18, 42, 28, 0.22));
+}
+
+.brand-mark svg.icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
 }
 
 .brand-word {
   display: flex;
   flex-direction: column;
   font-family: var(--font-display);
-  font-size: 1.32rem;
-  font-weight: 560;
+  font-size: 1.34rem;
+  font-weight: 600;
   line-height: 1;
   letter-spacing: -0.02em;
 }
@@ -1195,12 +1206,13 @@ small {
 .brand-word small {
   margin-top: 0.22rem;
   font-family: var(--font-sans);
-  font-size: 0.47rem;
-  font-weight: 750;
-  letter-spacing: 0.24em;
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   line-height: 1;
   text-transform: uppercase;
   color: var(--muted);
+  white-space: nowrap;
 }
 
 .main-nav {
@@ -2125,8 +2137,8 @@ body.cart-open {
 }
 
 .footer-brand .brand-mark {
-  background: var(--butter);
-  color: var(--forest-ink);
+  background: transparent;
+  color: inherit;
 }
 
 .footer-brand .brand-word small {

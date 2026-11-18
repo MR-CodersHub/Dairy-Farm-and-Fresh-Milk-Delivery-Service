@@ -397,15 +397,40 @@
   }
 
   /* ---------- Header & footer markup ---------- */
+  const brandLogoSVG = `
+    <svg class="brand-logo-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="32" r="31" fill="#1b3d2a" stroke="#f2cb70" stroke-width="2"/>
+      <g>
+        <rect x="0" y="0" width="64" height="64" rx="32" fill="#28543b"/>
+        <circle cx="32" cy="27" r="11" fill="#f2cb70"/>
+        <path d="M32 10v4M22 13l2.5 3M42 13l-2.5 3M15 22l3.5 1.5M49 22l-3.5 1.5" stroke="#f2cb70" stroke-width="2" stroke-linecap="round"/>
+        <path d="M0 39 C14 31, 26 31, 42 36 C52 39, 58 37, 64 35 L64 64 L0 64 Z" fill="#2d6345"/>
+        <path d="M0 44 C12 37, 30 38, 48 45 C55 48, 60 46, 64 44 L64 64 L0 64 Z" fill="#1b3d2a"/>
+        <path d="M12 37v5M17 38v5M22 39v5M42 39v5M47 38v5M52 37v5" stroke="#f2cb70" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+        <path d="M10 40h14M40 40h14" stroke="#f2cb70" stroke-width="0.8" opacity="0.45"/>
+        <path d="M28 17 h8 l2.5 5 v24 a2.5 2.5 0 0 1 -2.5 2.5 h-8 a2.5 2.5 0 0 1 -2.5 -2.5 v-24 l2.5 -5 Z" fill="rgba(18, 42, 28, 0.45)"/>
+        <rect x="29" y="14" width="6" height="3" rx="1.2" fill="#f2cb70" stroke="#122a1c" stroke-width="0.8"/>
+        <path d="M28.5 17 h7 l2.5 5.5 v23 a2 2 0 0 1 -2 2 h-8 a2 2 0 0 1 -2 -2 v-23 l2.5 -5.5 Z" fill="#fffdf6" stroke="#122a1c" stroke-width="1.2" stroke-linejoin="round"/>
+        <path d="M27 26.5 c2 -0.8, 5 0.8, 10 0 v19.5 a1 1 0 0 1 -1 1 h-8 a1 1 0 0 1 -1 -1 v-19.5 Z" fill="#fff8e9"/>
+        <path d="M32 31 c1.8 2.2, 2.5 3.3, 2.5 4.5 a2.5 2.5 0 0 1 -5 0 c0 -1.2, 0.7 -2.3, 2.5 -4.5 Z" fill="#28543b"/>
+        <circle cx="31.2" cy="34" r="0.6" fill="#fffdf6"/>
+        <path d="M28 27 v16" stroke="#ffffff" stroke-width="1" stroke-linecap="round" opacity="0.8"/>
+        <path d="M18 51 c3.5 -4, 8.5 -4.5, 11 -2 c-2 3.5 -6 5 -11 2 Z" fill="#a8b99a"/>
+        <path d="M46 51 c-3.5 -4, -8.5 -4.5, -11 -2 c2 3.5, 6 5, 11 2 Z" fill="#a8b99a"/>
+      </g>
+      <circle cx="32" cy="32" r="28" fill="none" stroke="#f2cb70" stroke-width="0.9" stroke-dasharray="2.5 2" opacity="0.75"/>
+    </svg>
+  `;
+
   const brandMark = `
     <span class="brand-mark" aria-hidden="true">
-      ${icon("milk")}
+      ${brandLogoSVG}
     </span>
-    <span class="brand-word">Meadowly<small>Dairy Co.</small></span>
+    <span class="brand-word">Meadowly<small>Dairy Farm &amp; Fresh Milk</small></span>
   `;
 
   const headerHTML = `
-    <header class="site-header" data-site-header>
+    <header class="site-header is-loading" data-site-header>
       <div class="utility-bar">
         <div class="container utility-inner">
           <p><span class="live-dot" aria-hidden="true"></span> Morning milking is underway · deliveries 5:30–6:30 AM</p>
@@ -781,9 +806,24 @@
 
     const header = qs("[data-site-header]");
     if (header) {
-      const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 12);
-      onScroll();
-      window.addEventListener("scroll", onScroll, { passive: true });
+      let isScrolled = false;
+      const updateScroll = () => {
+        const y = window.scrollY || window.pageYOffset || 0;
+        if (!isScrolled && y > 40) {
+          isScrolled = true;
+          header.classList.add("is-scrolled");
+        } else if (isScrolled && y < 15) {
+          isScrolled = false;
+          header.classList.remove("is-scrolled");
+        }
+      };
+      updateScroll();
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          header.classList.remove("is-loading");
+        });
+      });
+      window.addEventListener("scroll", updateScroll, { passive: true });
     }
 
     const backToTop = qs(".back-to-top");
@@ -1117,37 +1157,44 @@
     });
   }
 
-  /* ---------- Page transitions ---------- */
+  /* ---------- Page transitions & history restoration ---------- */
   function initInternalLinks() {
     document.addEventListener("click", (event) => {
       const link = event.target.closest("a");
       if (!link) return;
       const href = link.getAttribute("href") || "";
-      if (
-        event.defaultPrevented ||
-        event.metaKey ||
-        event.ctrlKey ||
-        event.shiftKey ||
-        event.altKey ||
-        link.target === "_blank" ||
-        link.hasAttribute("download") ||
-        href.startsWith("#") ||
-        href.startsWith("http") ||
-        href.startsWith("mailto:") ||
-        href.startsWith("tel:")
-      ) {
-        return;
-      }
+      if (href.startsWith("#")) return;
+
+      // Close open drawers when navigating to prevent trapped UI states
       if (body.classList.contains("menu-open")) {
-        body.classList.remove("menu-open");
+        closeNavDrawer();
       }
-      if (!reduceMotion) {
-        body.classList.add("page-leaving");
-        event.preventDefault();
-        window.setTimeout(() => {
-          window.location.href = href;
-        }, 180);
+      if (body.classList.contains("cart-open")) {
+        closeCartDrawer();
       }
+    });
+
+    // Handle Back/Forward cache (bfcache) restoration without white screens or stuck classes
+    window.addEventListener("pageshow", (event) => {
+      body.classList.remove("page-leaving", "menu-open", "cart-open");
+      const cartBackdrop = qs("[data-cart-backdrop]");
+      if (cartBackdrop) cartBackdrop.classList.remove("is-open");
+      const cartDrawer = qs("#boxCartDrawer");
+      if (cartDrawer) cartDrawer.classList.remove("is-open");
+      const navBackdrop = qs("[data-drawer-backdrop]");
+      if (navBackdrop) navBackdrop.classList.remove("is-open");
+      const navDrawer = qs(".nav-drawer");
+      if (navDrawer) navDrawer.classList.remove("is-open");
+
+      if (event.persisted) {
+        markCurrentPage();
+        updateBoxCounts();
+        renderCartDrawer();
+      }
+    });
+
+    window.addEventListener("pagehide", () => {
+      body.classList.remove("page-leaving", "menu-open", "cart-open");
     });
   }
 
