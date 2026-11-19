@@ -610,80 +610,100 @@
   `;
 
   const footerHTML = `
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
       <div class="container">
         <div class="footer-grid">
-          <div class="footer-brand">
-            <a class="brand" href="index.html" aria-label="Meadowly Dairy Co. — home">${brandMark}</a>
-            <p>Small-batch dairy from the Nilgiris and Pollachi, bottled before sunrise and delivered in returnable glass.</p>
-            <div class="footer-socials">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Meadowly on Instagram">${icon("instagram")}</a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Meadowly on Facebook">${icon("facebook")}</a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Meadowly on YouTube">${icon("youtube")}</a>
-              <a href="https://wa.me/919000012345" target="_blank" rel="noopener noreferrer" aria-label="Message Meadowly on WhatsApp">${icon("whatsapp")}</a>
-            </div>
-            <div class="footer-cert">
-              <span>FSSAI 22419008000123</span>
-              <span>Antibiotic free</span>
-              <span>Glass returns</span>
+          <!-- Column 1: Company -->
+          <div class="footer-col footer-col--company">
+            <div class="footer-brand">
+              <a class="brand" href="index.html" aria-label="Meadowly Dairy Co. — home">${brandMark}</a>
+              <p class="footer-description">
+                Small-batch, single-origin dairy from certified Nilgiris partner farms. Bottled at dawn and delivered fresh in returnable glass bottles by 6:30 AM across Coimbatore.
+              </p>
+              <div class="footer-socials" aria-label="Social media channels">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Meadowly on Instagram">${icon("instagram")}</a>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Meadowly on Facebook">${icon("facebook")}</a>
+                <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="Meadowly on X (Twitter)">${icon("x")}</a>
+                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="Meadowly on YouTube">${icon("youtube")}</a>
+              </div>
             </div>
           </div>
-          <div class="footer-col">
-            <h3>Shop</h3>
-            <ul>
-              <li><a href="products.html">All dairy</a></li>
-              <li><a href="product-details.html">Product details</a></li>
-              <li><a href="subscription.html">Subscription plans</a></li>
-              <li><a href="pricing.html">Pricing &amp; add-ons</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h3>Company</h3>
-            <ul>
+
+          <!-- Column 2: Quick Links (Matches exact navbar order & labels) -->
+          <div class="footer-col footer-col--links">
+            <h3 class="footer-heading">Quick Links</h3>
+            <ul class="footer-links" role="list">
+              <li><a href="index.html">Home</a></li>
               <li><a href="home-2.html">Home 2</a></li>
               <li><a href="about.html">About</a></li>
+              <li><a href="products.html">Products</a></li>
               <li><a href="sourcing.html">Farm sourcing</a></li>
+              <li><a href="subscription.html">Plans</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
               <li><a href="blog.html">Blog</a></li>
-              <li><a href="blog-details.html">Featured story</a></li>
               <li><a href="contact.html">Contact</a></li>
             </ul>
           </div>
-          <div class="footer-col">
-            <h3>Account</h3>
-            <ul>
-              <li><a href="login.html">Login / Signup</a></li>
-              <li><a href="signup.html">Create account</a></li>
-              <li><a href="dashboard.html">Subscriber Dashboard</a></li>
-              <li><a href="admin.html">Admin Dashboard</a></li>
-              <li><a href="404.html">404 page</a></li>
-              <li><a href="maintenance.html">Maintenance</a></li>
+
+          <!-- Column 3: Contact Details -->
+          <div class="footer-col footer-col--contact">
+            <h3 class="footer-heading">Contact Us</h3>
+            <ul class="footer-contact-list" role="list">
+              <li class="footer-contact-item">
+                <span class="footer-contact-icon" aria-hidden="true">${icon("map-pin")}</span>
+                <div class="footer-contact-text">
+                  <strong>Farm &amp; Dairy Desk</strong>
+                  <a href="contact.html#visit">Meadowly Dairy Co., Anaikatti Road, Coimbatore 641 108</a>
+                </div>
+              </li>
+              <li class="footer-contact-item">
+                <span class="footer-contact-icon" aria-hidden="true">${icon("phone")}</span>
+                <div class="footer-contact-text">
+                  <strong>Phone Support</strong>
+                  <a href="tel:+914224001880">+91 422 400 1880</a>
+                </div>
+              </li>
+              <li class="footer-contact-item">
+                <span class="footer-contact-icon" aria-hidden="true">${icon("mail")}</span>
+                <div class="footer-contact-text">
+                  <strong>Email Desk</strong>
+                  <a href="mailto:care@meadowly.in">care@meadowly.in</a>
+                </div>
+              </li>
+              <li class="footer-contact-item">
+                <span class="footer-contact-icon" aria-hidden="true">${icon("clock")}</span>
+                <div class="footer-contact-text">
+                  <strong>Working Hours</strong>
+                  <span>7:00 AM – 8:00 PM · Every day</span>
+                </div>
+              </li>
             </ul>
           </div>
-          <div class="footer-news">
-            <div>
-              <h3>The Sunday Pour</h3>
-              <p>Farm notes, seasonal recipes and a small dose of meadow calm — once a week.</p>
-            </div>
+
+          <!-- Column 4: Newsletter -->
+          <div class="footer-col footer-col--newsletter">
+            <h3 class="footer-heading">Newsletter</h3>
+            <p class="footer-newsletter-desc">
+              Subscribe to receive the latest updates, sunrise delivery notes, seasonal offers, and fresh dairy insights.
+            </p>
             <form class="newsletter-form js-newsletter" novalidate>
               <label class="sr-only" for="footerNewsletterEmail">Email address</label>
               <input id="footerNewsletterEmail" name="email" type="email" placeholder="Your email address" autocomplete="email" required>
-              <button class="btn btn--butter btn--sm" type="submit">Join</button>
+              <button class="btn btn--butter btn--sm" type="submit">Subscribe</button>
             </form>
-            <p class="footer-fine">By joining you agree to our friendly, low-volume emails. Unsubscribe whenever you like.</p>
+            <p class="footer-fine">No spam. Low-volume morning updates. Unsubscribe anytime.</p>
           </div>
         </div>
-        <p class="footer-giant" aria-hidden="true">meadowly</p>
+
+        <!-- Bottom Legal & Copyright Bar -->
         <div class="footer-bottom">
-          <p>© <span data-year>2026</span> Meadowly Dairy Co. · Coimbatore, Tamil Nadu</p>
+          <p class="footer-copy">© <span data-year>2026</span> Meadowly Dairy Co. All rights reserved.</p>
           <div class="footer-legal">
-            <a href="contact.html#faq">Privacy</a>
-            <a href="contact.html#faq">Terms</a>
-            <a href="contact.html#delivery">Delivery areas</a>
-            <div class="pay-badges" aria-label="Accepted payment methods">
-              <span>UPI</span>
-              <span>VISA</span>
-              <span>MC</span>
-            </div>
+            <a href="contact.html#privacy">Privacy Policy</a>
+            <span class="footer-legal__sep" aria-hidden="true">|</span>
+            <a href="contact.html#terms">Terms &amp; Conditions</a>
+            <span class="footer-legal__sep" aria-hidden="true">|</span>
+            <a href="404.html#shortcuts">Sitemap</a>
           </div>
         </div>
       </div>
