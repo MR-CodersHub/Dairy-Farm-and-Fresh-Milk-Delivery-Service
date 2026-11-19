@@ -48,6 +48,7 @@
   --container: 1240px;
   --gutter: clamp(1.15rem, 3vw, 2.5rem);
   --header-h: 78px;
+  --header-actual-h: 114px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -2448,8 +2449,6 @@ body.cart-open {
 
 .marquee {
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
 }
 
 .marquee-track {
@@ -2696,6 +2695,7 @@ body.cart-open {
 @media (max-width: 900px) {
   :root {
     --header-h: 70px;
+    --header-actual-h: 106px;
   }
 
   .utility-links {

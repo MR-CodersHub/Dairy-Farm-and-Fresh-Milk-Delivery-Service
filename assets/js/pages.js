@@ -477,12 +477,12 @@
       button.addEventListener("click", () => {
         const field = $("input", button.closest(".password-field"));
         if (!field) return;
-        const showing = field.type === "text";
-        field.type = showing ? "password" : "text";
-        button.setAttribute("aria-label", showing ? "Show password" : "Hide password");
-        button.setAttribute("aria-pressed", String(!showing));
+        const isPassword = field.type === "password";
+        field.type = isPassword ? "text" : "password";
+        button.setAttribute("aria-label", isPassword ? "Hide password" : "Show password");
+        button.setAttribute("aria-pressed", String(isPassword));
         const use = $("use", button);
-        if (use) use.setAttribute("href", `assets/icons.svg#${showing ? "lock" : "info"}`);
+        if (use) use.setAttribute("href", `assets/icons.svg#${isPassword ? "eye-off" : "eye"}`);
       });
     });
   }
@@ -495,8 +495,9 @@
       const email = $("#loginEmail");
       const password = $("#loginPassword");
       let valid = true;
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value)) {
-        ui.markInvalid?.(email, "Enter the email linked to your plan.");
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) {
+        ui.markInvalid?.(email, "Enter a valid email address.");
         valid = false;
       }
       if (!password || password.value.length < 6) {
@@ -504,108 +505,110 @@
         valid = false;
       }
       if (!valid) {
-        toast("Check your details", "We couldn't sign you in just yet.", "error");
+        toast("Check your details", "Please correct the highlighted fields.", "error");
         return;
       }
-      toast("Welcome back to the meadow", "Opening your morning dashboard.");
-      form.reset();
+
+      try {
+        const remember = form.elements["remember"]?.checked;
+        localStorage.setItem("meadowly-user", JSON.stringify({
+          email: email.value.trim(),
+          remember: Boolean(remember),
+          loggedIn: true,
+          loginTime: new Date().toISOString()
+        }));
+      } catch (err) {}
+
+      toast("Welcome back to Meadowly", "Opening your morning dashboard...");
       window.setTimeout(() => {
         window.location.href = "dashboard.html";
-      }, 900);
+      }, 800);
     });
-    $$("input", form).forEach((input) =>
-      input.addEventListener("input", () => ui.clearInvalid?.(input))
-    );
+
+    $$("input", form).forEach((input) => {
+      input.addEventListener("input", () => ui.clearInvalid?.(input));
+    });
+
+    // Forgot password handler
+    const forgotBtn = $(".js-forgot-password", form.parentElement);
+    if (forgotBtn) {
+      forgotBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const email = $("#loginEmail");
+        if (email && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) {
+          toast("Password reset link sent", `Recovery instructions sent to ${email.value.trim()}`);
+        } else {
+          toast("Forgot password?", "Enter your registered email address above and click Forgot password again to receive a reset link.");
+          email?.focus();
+        }
+      });
+    }
   }
 
   function initSignup() {
     const form = $("#signupForm");
     if (!form) return;
-    const panels = $$("[data-signup-step]");
-    const markers = $$("[data-signup-marker]");
-    let step = 1;
-
-    const paint = () => {
-      panels.forEach((panel) => {
-        panel.classList.toggle("is-active", Number(panel.dataset.signupStep) === step);
-      });
-      markers.forEach((marker) => {
-        marker.classList.toggle("is-active", Number(marker.dataset.signupMarker) <= step);
-      });
-    };
-
-    const validateStepOne = () => {
-      const name = $("#signupName");
-      const email = $("#signupEmail");
-      const phone = $("#signupPhone");
-      let valid = true;
-      if (!name || name.value.trim().length < 2) {
-        ui.markInvalid?.(name, "Please tell us your name.");
-        valid = false;
-      }
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value)) {
-        ui.markInvalid?.(email, "Enter a valid email address.");
-        valid = false;
-      }
-      if (!phone || !/^[6-9]\d{9}$/.test(phone.value.replace(/\D/g, ""))) {
-        ui.markInvalid?.(phone, "Enter a valid 10-digit mobile number.");
-        valid = false;
-      }
-      return valid;
-    };
-
-    const next = $("[data-signup-next]");
-    const back = $("[data-signup-back]");
-    if (next) {
-      next.addEventListener("click", () => {
-        if (!validateStepOne()) {
-          toast("Check your details", "A name, email and mobile number are needed.", "error");
-          return;
-        }
-        step = 2;
-        paint();
-        panels[1]?.querySelector("input")?.focus();
-      });
-    }
-    if (back) {
-      back.addEventListener("click", () => {
-        step = 1;
-        paint();
-      });
-    }
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      const address = $("#signupAddress");
-      const pincode = $("#signupPincode");
+      const name = $("#signupName");
+      const email = $("#signupEmail");
+      const phone = $("#signupPhone");
+      const password = $("#signupPassword");
+      const confirmPassword = $("#signupConfirmPassword");
+      const terms = $("#signupTerms");
       let valid = true;
-      if (!address || address.value.trim().length < 6) {
-        ui.markInvalid?.(address, "Add your delivery address.");
+
+      if (!name || name.value.trim().length < 2) {
+        ui.markInvalid?.(name, "Please enter your full name.");
         valid = false;
       }
-      if (!pincode || !/^6\d{5}$/.test(pincode.value.trim())) {
-        ui.markInvalid?.(pincode, "Enter a 6-digit pincode.");
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) {
+        ui.markInvalid?.(email, "Enter a valid email address.");
         valid = false;
       }
-      const check = $("#signupConsent");
-      if (check && !check.checked) {
-        toast("One small thing", "Please accept the delivery and privacy terms.", "error");
+      if (!phone || phone.value.replace(/\D/g, "").length < 10) {
+        ui.markInvalid?.(phone, "Enter a valid 10-digit mobile number.");
         valid = false;
       }
-      if (!valid) return;
-      toast("Your Meadowly account is ready", "Choose your first delivery rhythm in the dashboard.");
-      form.reset();
-      step = 1;
-      paint();
+      if (!password || password.value.length < 6) {
+        ui.markInvalid?.(password, "Password must be at least 6 characters.");
+        valid = false;
+      }
+      if (!confirmPassword || confirmPassword.value !== (password ? password.value : "")) {
+        ui.markInvalid?.(confirmPassword, "Passwords do not match.");
+        valid = false;
+      }
+      if (terms && !terms.checked) {
+        ui.markInvalid?.(terms, "You must agree to the Terms & Privacy Policy.");
+        valid = false;
+      }
+
+      if (!valid) {
+        toast("Check your details", "Please correct the highlighted fields.", "error");
+        return;
+      }
+
+      try {
+        localStorage.setItem("meadowly-user", JSON.stringify({
+          name: name.value.trim(),
+          email: email.value.trim(),
+          phone: phone.value.trim(),
+          loggedIn: true,
+          signupTime: new Date().toISOString()
+        }));
+      } catch (err) {}
+
+      toast("Account created successfully!", "Opening your morning dashboard...");
       window.setTimeout(() => {
         window.location.href = "dashboard.html";
-      }, 1000);
+      }, 900);
     });
 
-    $$("input, textarea", form).forEach((input) =>
-      input.addEventListener("input", () => ui.clearInvalid?.(input))
-    );
-    paint();
+    $$("input", form).forEach((input) => {
+      input.addEventListener("input", () => ui.clearInvalid?.(input));
+      input.addEventListener("change", () => ui.clearInvalid?.(input));
+    });
   }
 
   /* ---------- Blog details ---------- */

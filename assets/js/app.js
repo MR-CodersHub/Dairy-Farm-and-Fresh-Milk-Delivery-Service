@@ -476,8 +476,15 @@
                 </div>
                 <a href="login.html" role="menuitem">
                   <div>
-                    <strong>Login / Signup</strong>
-                    <small>Subscriber sign in &amp; join</small>
+                    <strong>Login</strong>
+                    <small>Sign in to your morning account</small>
+                  </div>
+                  ${icon("arrow-right", "icon icon--sm")}
+                </a>
+                <a href="signup.html" role="menuitem">
+                  <div>
+                    <strong>Signup</strong>
+                    <small>Create an account to get started</small>
                   </div>
                   ${icon("arrow-right", "icon icon--sm")}
                 </a>
@@ -523,7 +530,8 @@
         <a href="blog.html">Blog ${icon("arrow-right")}</a>
         <a href="contact.html">Contact ${icon("arrow-right")}</a>
         <span class="drawer-label">Account</span>
-        <a href="login.html">Login / Signup ${icon("arrow-right")}</a>
+        <a href="login.html">Login ${icon("arrow-right")}</a>
+        <a href="signup.html">Signup ${icon("arrow-right")}</a>
         <a href="dashboard.html">Subscriber Dashboard ${icon("arrow-right")}</a>
         <a href="admin.html">Admin Dashboard ${icon("arrow-right")}</a>
       </nav>
@@ -713,7 +721,18 @@
   function injectShell() {
     const headerHost = qs("#site-header");
     const footerHost = qs("#site-footer");
-    if (headerHost) headerHost.innerHTML = headerHTML;
+    if (headerHost) {
+      headerHost.innerHTML = headerHTML;
+      const measureHeader = () => {
+        const rect = headerHost.getBoundingClientRect();
+        const h = rect.height || headerHost.offsetHeight;
+        if (h > 0) {
+          document.documentElement.style.setProperty("--header-actual-h", `${Math.round(h)}px`);
+        }
+      };
+      measureHeader();
+      window.addEventListener("resize", measureHeader, { passive: true });
+    }
     if (footerHost) footerHost.innerHTML = footerHTML;
 
     if (!qs(".skip-link")) {
@@ -723,7 +742,7 @@
       );
     }
 
-    if (!qs(".back-to-top")) {
+    if (!qs(".back-to-top") && !body.classList.contains("auth-page") && body.dataset.page !== "login" && body.dataset.page !== "signup") {
       body.insertAdjacentHTML(
         "beforeend",
         `<button class="back-to-top" type="button" aria-label="Back to top">${icon("arrow-right")}</button>`
@@ -811,6 +830,23 @@
         });
         item.classList.toggle("is-open", !isOpen);
         trigger.setAttribute("aria-expanded", String(!isOpen));
+      });
+
+      trigger.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+          item.classList.add("is-open");
+          trigger.setAttribute("aria-expanded", "true");
+          const firstLink = qs("a", item);
+          if (firstLink) firstLink.focus();
+        }
+      });
+
+      qsa("a", item).forEach((link) => {
+        link.addEventListener("click", () => {
+          item.classList.remove("is-open");
+          trigger.setAttribute("aria-expanded", "false");
+        });
       });
     });
 
