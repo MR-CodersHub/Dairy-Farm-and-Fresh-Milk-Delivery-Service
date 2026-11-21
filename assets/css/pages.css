@@ -3786,6 +3786,11 @@ body.page-leaving {
 }
 
 @media (max-width: 900px) {
+  .page-hero__grid,
+  .home2-hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .page-hero__media,
   .products-hero-visual,
   .home2-hero__visual,
